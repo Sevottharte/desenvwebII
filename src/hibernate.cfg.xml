@@ -19,7 +19,9 @@
 		
 		<mapping class = "br.com.javaweb.domain.Orientador" />
 		<mapping class = "br.com.javaweb.domain.Aluno" />
+		<mapping class = "br.com.javaweb.domain.Usuario" />
 		<mapping class = "br.com.uab.modelo.Produto" />
+		
 		
 	</session-factory>
 </hibernate-configuration>
