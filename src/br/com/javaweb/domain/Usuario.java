@@ -13,8 +13,8 @@ import javax.persistence.Table;
 @Table(name="tbl_usuarios")
 @NamedQueries({
 	@NamedQuery(name="Usuario.listar", query="SELECT usuario FROM Usuario usuario "),
-	@NamedQuery(name="Usuario.buscarPorCodigo", query="SELECT aluno FROM Usuario usuario "
-			+ "WHERE aluno.codigo = :codigo")
+	@NamedQuery(name="Usuario.buscarPorCodigo", query="SELECT usuario FROM Usuario usuario "
+			+ "WHERE usuario.codigo = :codigo")
 })
 public class Usuario {
 	@Id

@@ -9,7 +9,9 @@ import org.hibernate.Transaction;
 import br.com.javaweb.domain.Orientador;
 import br.com.javaweb.util.HibernateUtil;
 
-public class OrientadorDao {
+public class OrientadorDAO {
+	
+	public OrientadorDAO() {}
 
 	public void salvar(Orientador orientador) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
