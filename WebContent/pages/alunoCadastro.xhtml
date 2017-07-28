@@ -6,39 +6,60 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <ui:composition template="/templates/modeloGeral.xhtml">
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:event listener="#{alunoBean.carregarCadastro}"
+				type="preRenderView" />
+		</f:metadata>
+	</ui:define>
 	<ui:define name="conteudo">
-		<h:form>
+		<h:form id="frmAluCad">
 			<p:toolbar>
 				<f:facet name="left">
 					<h:outputText value="Cadastro de Aluno" />
 				</f:facet>
 			</p:toolbar>
-			<h:panelGrid columns="2">
+			<h:panelGrid id="pnlAluCadDados" columns="2">
 				<p:outputLabel value="Código" />
-				<p:inputText size="12" readonly="true" />
+				<p:inputText size="12" readonly="true"
+					value="#{alunoBean.alunoCadastro.codigo}" />
 				<p:outputLabel value="Nome" />
-				<p:inputText maxlength="60" size="80" />
+				<p:inputText maxlength="60" size="80"
+					value="#{alunoBean.alunoCadastro.nome}" />
 				<p:outputLabel value="CPF" />
-				<p:inputMask mask="999.999.999-99" size="15" />
-				
+				<p:inputMask mask="999.999.999-99" size="15"
+					value="#{alunoBean.alunoCadastro.cpf}" />
 				<p:outputLabel value="Data de matrícula" />
-				<p:inputMask mask="99/99/9999" size="10" />
-				
+				<p:inputMask mask="99/99/9999" size="10"
+					value="#{alunoBean.alunoCadastro.dataMatricula}" />
 				<p:outputLabel value="Telefone" />
-				<p:inputMask mask="(99) 9999-9999" size="15" />
+				<p:inputMask mask="(99) 9999-9999" size="15"
+					value="#{alunoBean.alunoCadastro.telefone}" />
 				<p:outputLabel value="Selecione uma modalidade" />
-				<p:selectOneMenu>
+				<p:selectOneMenu value="#{alunoBean.alunoCadastro.modalidade}">
 					<f:selectItem itemLabel="Selecione uma opção" />
-					<f:selectItem itemLabel="Presencial" itemValue="presencial"/>
-					<f:selectItem itemLabel="EAD" itemValue="ead"/>					
+					<f:selectItem itemLabel="Presencial" itemValue="presencial" />
+					<f:selectItem itemLabel="EAD" itemValue="ead" />
 				</p:selectOneMenu>
 			</h:panelGrid>
-			
-			<h:panelGrid columns="3">				
-				<p:commandButton value="Gravar" />
-				<p:commandButton value="Limpar" />
-				<p:commandButton value="Retornar" action="/pages/alunoPesquisa.xhtml"/>				
-			</h:panelGrid>			
+
+			<h:panelGrid columns="5">
+				<p:commandButton value="Gravar" actionListener="#{alunoBean.salvar}"
+					update=":msgGlobal :frmAluCad:pnlAluCadDados" />
+
+				<p:commandButton action="#{alunoBean.limpar()}" value="Limpar"
+					process="@this" update="@form" resetValues="true" />
+
+				<p:commandButton value="Retornar"
+					action="/pages/alunoPesquisa.xhtml" />
+
+				<!-- Adição de botões para manipular os dados inseridos -->
+				<p:commandButton value="Excluir"
+					actionListener="#{alunoBean.excluir}" update=":msgGlobal" />
+
+				<p:commandButton value="Editar" actionListener="#{alunoBean.editar}"
+					update=":msgGlobal" />
+			</h:panelGrid>
 		</h:form>
 	</ui:define>
 </ui:composition>

@@ -28,18 +28,22 @@ public class Aluno {
 	
 	@Column(name = "alu_nome", length = 70, nullable = false)
 	private String nome;
+			
+	/*
+	 * Adicionando novos campos para atender às necessidades da quarta semana
+	 * */
+	//cpf sem a pontuação
+	@Column(name = "alu_cpf", length = 14, nullable = false)
+	private String cpf;
 	
-	@Column(name = "alu_curso", length = 70, nullable = false)
-	private String curso;
+	@Column(name = "data_matricula", length = 15, nullable = false)
+	private String dataMatricula;
 	
-	@Column(name = "matricula", length = 15, nullable = false)
-	private String matricula;
+	@Column(name = "telefone", length = 15, nullable = false)
+	private String telefone;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="tbl_orientadores_ori_codigo0", 
-		referencedColumnName = "ori_codigo", nullable = false)
-	private Orientador orientador;
-	
+	@Column(name = "modalidade", length = 15, nullable = false)
+	private String modalidade;
 	
 	public Long getCodigo() {
 		return codigo;
@@ -52,23 +56,29 @@ public class Aluno {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}	
+	public String getDataMatricula() {
+		return dataMatricula;
 	}
-	public String getCurso() {
-		return curso;
+	public void setDataMatricula(String dataMatricula) {
+		this.dataMatricula = dataMatricula;
 	}
-	public void setCurso(String curso) {
-		this.curso = curso;
+	public String getTelefone() {
+		return telefone;
 	}
-	public String getMatricula() {
-		return matricula;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
+	public String getModalidade() {
+		return modalidade;
 	}
-	public Orientador getOrientador() {
-		return orientador;
+	public void setModalidade(String modalidade) {
+		this.modalidade = modalidade;
 	}
-	public void setOrientador(Orientador orientador) {
-		this.orientador = orientador;
+	public String getCpf() {
+		return cpf;
 	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}	
 }

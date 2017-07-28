@@ -13,13 +13,38 @@
 					<h:outputText value="Alunos" />
 				</f:facet>
 			</p:toolbar>
-			<p:dataTable emptyMessage="Nenhum registro encontrado.">
-				<p:column headerText="Código"></p:column>
-				<p:column headerText="Nome"></p:column>
-				<p:column headerText="CPF"></p:column>
-				<p:column headerText="Opções"></p:column>
+			<p:dataTable emptyMessage="Nenhum registro encontrado."
+				value="#{alunoBean.listaAlunos}"
+				filteredValue="#{alunoBean.listaAlunosFiltrados}" rows="6"
+				paginator="true" var="aluno">
+				<f:facet name="footer">
+					<p:commandButton value="Novo"
+						action="/pages/alunoCadastro.xhtml?faces-redirect=true" />
+				</f:facet>
+
+
+				<p:column headerText="Código">
+					<h:outputText value="#{aluno.codigo}" />
+				</p:column>
+				<p:column headerText="Nome" filterBy="#{aluno.nome}"
+					sortBy="#{aluno.nome}">
+					<h:outputText value="#{aluno.nome}" />
+				</p:column>
+				<p:column headerText="CPF">
+					<h:outputText value="#{aluno.cpf}" />
+				</p:column>
+				<p:column headerText="Opções">
+
+					<p:button value="Excluir" outcome="/pages/alunoCadastro.xhtml">
+						<f:param name="alucod" value="#{aluno.codigo}" />
+					</p:button>
+					<p:button value="Editar" outcome="/pages/alunoCadastro.xhtml">
+						<f:param name="alucod" value="#{aluno.codigo}" />
+					</p:button>
+				</p:column>
 			</p:dataTable>
 		</h:form>
+		<f:event listener="#{alunoBean.carregar}" type="preRenderView" />
 	</ui:define>
 </ui:composition>
 </html>
