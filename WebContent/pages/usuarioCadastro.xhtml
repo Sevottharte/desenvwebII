@@ -6,34 +6,51 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <ui:composition template="/templates/modeloGeral.xhtml">
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:event listener="#{usuarioBean.carregarCadastro}"
+				type="preRenderView" />
+		</f:metadata>
+	</ui:define>
 	<ui:define name="conteudo">
-		<h:form>
+		<h:form id="frmUsuCad">
 			<p:toolbar>
 				<f:facet name="left">
 					<h:outputText value="Cadastro de Usuário" />
 				</f:facet>
 			</p:toolbar>
-			<h:panelGrid columns="2">
+			<h:panelGrid id="pnlUsuCadDados" columns="2">
 				<p:outputLabel value="Código" />
-				<p:inputText size="10" readonly="true" />
+				<p:inputText size="10" readonly="true"
+					value="#{usuarioBean.usuarioCadastro.codigo}" />
 				<p:outputLabel value="Nome" />
-				<p:inputText maxlength="70" size="30" />
+				<p:inputText maxlength="70" size="30"
+					value="#{usuarioBean.usuarioCadastro.nome}" />
 				<p:outputLabel value="CPF" />
-				<p:inputMask mask="999.999.999-99" size="15" />
+				<p:inputMask mask="999.999.999-99" size="15"
+					value="#{usuarioBean.usuarioCadastro.cpf}" />
 				<p:outputLabel value="Função" />
-				<p:selectOneMenu>
+				<p:selectOneMenu value="#{usuarioBean.usuarioCadastro.funcao}">
 					<f:selectItem itemLabel="Selecione uma função" />
-					<f:selectItem itemLabel="Coordenador" />
-					<f:selectItem itemLabel="Vice-Coordenador" />
-					<f:selectItem itemLabel="Secretário" />
+					<f:selectItem itemLabel="Coordenador" itemValue="Coordenador" />
+					<f:selectItem itemLabel="Vice-Coordenador"
+						itemValue="Vice-Coordenador" />
+					<f:selectItem itemLabel="Secretário" itemValue="Secretário" />
 				</p:selectOneMenu>
 				<p:outputLabel value="Senha:" />
-				<p:password maxlength="8" size="10" />
+				<p:password maxlength="8" size="10" 
+					value="#{usuarioBean.usuarioCadastro.senha}"/>
 			</h:panelGrid>
 
-			<h:panelGrid columns="3">
-				<p:commandButton value="Novo" />
-				<p:commandButton value="Salvar" />
+			<h:panelGrid columns="5">
+				<p:commandButton value="Novo"
+					actionListener="#{usuarioBean.novo}" update=":frmUsuCad:pnlUsuCadDados" />
+				<p:commandButton value="Salvar"
+					actionListener="#{usuarioBean.salvar}" update=":frmUsuCad:pnlUsuCadDados" />
+				<p:commandButton value="Excluir"
+					actionListener="#{usuarioBean.excluir}" update=":msgGlobal" />
+				<p:commandButton value="Editar"
+					actionListener="#{usuarioBean.editar}" update=":msgGlobal" />
 				<p:commandButton value="Voltar"
 					action="/pages/usuarioPesquisa.xhtml" />
 			</h:panelGrid>

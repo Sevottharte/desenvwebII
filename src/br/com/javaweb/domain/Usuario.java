@@ -26,12 +26,14 @@ public class Usuario {
 	private String nome;
 
 	//cpf sem a pontuação
-	@Column(name = "usu_cpf", length = 11, nullable = false)
+	@Column(name = "usu_cpf", length = 15, nullable = false)
 	private String cpf;
 
 	@Column(name = "usu_senha", length = 16, nullable = false)
 	private String senha;
 
+	@Column(name = "usu_funcao", length = 16, nullable = false)
+	private String funcao;
 
 	public Long getCodigo() {
 		return codigo;
@@ -57,4 +59,11 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	public String getFuncao() {
+		return funcao;
+	}
+	public void setFuncao(String funcao) {
+		this.funcao = funcao;
+	}
+	
 }

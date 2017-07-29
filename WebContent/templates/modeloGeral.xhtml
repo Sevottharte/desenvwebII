@@ -10,10 +10,10 @@
 	<title>Sistema Java Web</title>
 </h:head>
 <h:body>
-<p:growl id="msgGlobal" sticky="true"/>
+	<p:growl id="msgGlobal" sticky="true" />
 	<p:layout fullPage="true">
 		<p:layoutUnit position="north" header="Sistema Java Web"
-			resizable="false" closable="false" collapsible="false">			
+			resizable="false" closable="false" collapsible="false">
 		</p:layoutUnit>
 
 		<p:layoutUnit position="south"
@@ -27,16 +27,20 @@
 			<h:form>
 				<p:panelMenu>
 					<p:submenu label="Arquivo">
-						<p:menuitem value="Principal" outcome="/pages/principal.xhtml"/>
+						<p:menuitem value="Principal" outcome="/pages/principal.xhtml" />
 						<p:menuitem value="Sair" />
 					</p:submenu>
 					<p:submenu label="Cadastro">
-						<p:menuitem value="Aluno" outcome="/pages/alunoPesquisa.xhtml"/>
-						<p:menuitem value="Cadastro Aluno" outcome="/pages/alunoCadastro.xhtml"/>
-						<p:menuitem value="Orientador" outcome="/pages/orientadorPesquisa.xhtml"/>
-						<p:menuitem value="Cadastro Orientador" outcome="/pages/orientadorCadastro.xhtml"/>
-						<p:menuitem value="Usuário" outcome="/pages/usuarioPesquisa.xhtml"/>
-						<p:menuitem value="Cadastro Usuário" outcome="/pages/usuarioCadastro.xhtml"/>
+						<p:menuitem value="Aluno" outcome="/pages/alunoPesquisa.xhtml" />
+						<p:menuitem value="Cadastro Aluno"
+							outcome="/pages/alunoCadastro.xhtml" />
+						<p:menuitem value="Orientador"
+							outcome="/pages/orientadorPesquisa.xhtml" />
+						<p:menuitem value="Cadastro Orientador"
+							outcome="/pages/orientadorCadastro.xhtml" />
+						<p:menuitem value="Usuário" outcome="/pages/usuarioPesquisa.xhtml" />
+						<p:menuitem value="Cadastro Usuário"
+							outcome="/pages/usuarioCadastro.xhtml" />
 					</p:submenu>
 					<p:submenu label="Avaliações">
 						<p:menuitem value="Nova" />
